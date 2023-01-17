@@ -1,4 +1,5 @@
 import React from "react";
+import PostList from "./PostList";
 
 export default function BlogContent() {
     return (
@@ -15,6 +16,7 @@ export default function BlogContent() {
                         Filter Blog by clicking author name/category
                     </p>
                 </div>
+                <PostList/>
             </div>
         </section>
     );
