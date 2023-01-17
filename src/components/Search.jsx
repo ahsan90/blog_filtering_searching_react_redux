@@ -1,16 +1,31 @@
 import searchsvg from '../assets/search.svg'
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import { debounce } from "lodash";
+import { useDispatch, useSelector } from "react-redux";
+import { reset_search, search_by_title } from "../redux/search/actions";
 
 export default function Search() {
     
+    const { isCleared } = useSelector(state => state.search)
+    const dispatch = useDispatch()
     const [searchText, setSearchText] = useState('');
 
 
-    
+    const debounceHandler = useCallback(debounce(((text) => {
+        dispatch(search_by_title(text))
+    }), 1000), [])
+
     const handleChange = (e) => {
         setSearchText(e.target.value)
+        debounceHandler(e.target.value)
     };
 
+    useEffect(() => {
+        if (isCleared) {
+            setSearchText('')
+            dispatch(reset_search())
+        }
+    }, [isCleared])
 
     return (
         <>
@@ -18,7 +33,7 @@ export default function Search() {
                 <input
                     className="outline-none border-none bg-gray-50 h-full w-full mr-2"
                     type="search"
-                    placeholder="Search"
+                    placeholder="Search Blog By Title"
                     value={searchText}
                     onChange={(e) => handleChange(e)}
                 />

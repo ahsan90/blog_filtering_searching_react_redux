@@ -10,7 +10,7 @@ export default function BlogContent() {
             <div className="relative max-w-7xl mx-auto">
                 <div className="text-center">
                     <h2 className="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl">
-                        ALL BLOGS ARE HERE
+                        Blog Filtering/Searching using React and Redux
                     </h2>
                     <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
                         Filter Blog by clicking author name/category

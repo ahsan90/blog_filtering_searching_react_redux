@@ -43,7 +43,7 @@ export default function PostItem({ post }) {
                         />
                     </div>
                     <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-900 hover:underline hover:cursor-pointer">
+                        <p className="text-sm font-medium text-gray-900 hover:underline hover:cursor-pointer hover:text-blue-600/100">
 
                             <button onClick={() => dispatch(get_post_by_author(post.authorName))}>
                                 {post.authorName}
