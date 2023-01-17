@@ -11,10 +11,10 @@ const postReducer = (state = initialState, action) => {
             return state
 
         case GET_POSTS_BY_AUTHOR:
-            return state.map(post => post.authorName === action.payload)
+            return state.filter(post => post.authorName === action.payload)
 
         case GET_POSTS_BY_CATEGORY:
-            return state.map(post => post.category === action.payload)
+            return state.filter(post => post.category === action.payload)
 
         case CLEAR_FILTERS:
             return state

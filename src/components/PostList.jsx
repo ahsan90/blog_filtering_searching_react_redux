@@ -4,7 +4,6 @@ import PostItem from "./PostItem";
 
 export default function PostList() {
     const posts = useSelector(state => state.posts)
-    console.log(posts)
 
     return (
         <>

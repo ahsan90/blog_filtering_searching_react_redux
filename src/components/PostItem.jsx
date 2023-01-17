@@ -1,8 +1,15 @@
 
 import image_sources from "../utility/image_source";
+import {
+    get_post_by_author,
+    get_post_by_category,
+} from "../redux/post/actions";
+import { useDispatch } from "react-redux";
 
 
 export default function PostItem({ post }) {
+
+    const dispatch = useDispatch()
 
     return (
         <div className="flex flex-col rounded-lg shadow-lg overflow-hidden">
@@ -13,9 +20,13 @@ export default function PostItem({ post }) {
             <div className="flex-1 bg-white p-6 flex flex-col justify-between">
                 <div className="flex-1">
                     <p className="text-sm font-medium text-indigo-600">
-                        <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 hover:underline">
+                        <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 hover:underline hover:cursor-pointer">
 
-                            {post.category}
+                            <button
+                                onClick={() => dispatch(get_post_by_category(post.category))}
+                            >
+                                {post.category}
+                            </button>
 
                         </span>
                     </p>
@@ -32,9 +43,11 @@ export default function PostItem({ post }) {
                         />
                     </div>
                     <div className="ml-3">
-                        <p className="text-sm font-medium text-gray-900 hover:underline">
+                        <p className="text-sm font-medium text-gray-900 hover:underline hover:cursor-pointer">
 
-                            {post.authorName}
+                            <button onClick={() => dispatch(get_post_by_author(post.authorName))}>
+                                {post.authorName}
+                            </button>
 
                         </p>
                         <div className="flex space-x-1 text-sm text-gray-500">
